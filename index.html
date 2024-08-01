@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encurtador de URL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Encurtador de URL</h1>
+        <form id="url-form">
+            <input type="url" id="url-input" placeholder="Digite a URL aqui..." required>
+            <button type="submit">Encurtar</button>
+        </form>
+        <div id="result" style="display: none;">
+            <p>URL Encurtada:</p>
+            <a id="short-url" href="#" target="_blank"></a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
