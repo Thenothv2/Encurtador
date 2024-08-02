@@ -1,18 +1,25 @@
 <?php
-$code = $_GET['code'];
+header('Content-Type: application/json');
 
-$file = fopen('urls.txt', 'r');
+$data = json_decode(file_get_contents('php://input'), true);
 
-while (($line = fgets($file)) !== false) {
-    list($shortCode, $url) = explode(' ', $line);
-    
-    if (trim($shortCode) == $code) {
-        fclose($file);
-        header("Location: $url");
-        exit;
-    }
+if (!isset($data['username'], $data['email'], $data['password'])) {
+    echo json_encode(['success' => false, 'error' => 'Campos obrigatórios não fornecidos.']);
+    exit;
 }
 
-fclose($file);
-echo "URL não encontrada.";
+$username = $data['username'];
+$email = $data['email'];
+$password = password_hash($data['password'], PASSWORD_BCRYPT);
+
+require_once 'db.php';
+
+$query = $db->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+$success = $query->execute([$username, $email, $password]);
+
+if ($success) {
+    echo json_encode(['success' => true]);
+} else {
+    echo json_encode(['success' => false, 'error' => 'Erro ao registrar usuário.']);
+}
 ?>
