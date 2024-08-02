@@ -1,38 +1,69 @@
+/* style.css */
+
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #2c2c2c; /* Dark background */
+    color: #fff;
     margin: 0;
-    background-color: #f4f4f4;
+    padding: 0;
 }
 
-.container {
-    text-align: center;
-    background: #fff;
+.header {
+    background-color: #b71c1c; /* Dark Red */
+    color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-input[type="url"] {
-    width: 80%;
+.main {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #333; /* Darker background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.shortcut-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #222; /* Slightly lighter dark */
+    color: #fff;
 }
 
 button {
-    padding: 10px 20px;
-    border: none;
-    background: #007BFF;
+    background-color: #b71c1c; /* Dark Red */
     color: #fff;
-    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #0056b3;
+    background-color: #f44336; /* Lighter Dark Red */
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.footer {
+    background-color: #b71c1c; /* Dark Red */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
