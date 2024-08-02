@@ -1,5 +1,11 @@
 <?php
 header('Content-Type: application/json');
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['error' => 'Usuário não autenticado']);
+    exit;
+}
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -8,13 +14,44 @@ if (!isset($data['url'])) {
     exit;
 }
 
+require_once 'db.php';
+
+$user_id = $_SESSION['user_id'];
+
+// Verifica se o usuário é premium
+$query = $db->prepare("SELECT is_premium FROM users WHERE id = ?");
+$query->execute([$user_id]);
+$user = $query->fetch(PDO::FETCH_ASSOC);
+
+$is_premium = $user['is_premium'];
+
+// Define limites para URLs e tamanho do link
+$max_urls = $is_premium ? 1000 : 100;
+$max_length = $is_premium ? 500 : 200;
+
+// Verifica o número de URLs criadas pelo usuário
+$query = $db->prepare("SELECT COUNT(*) AS url_count FROM urls WHERE user_id = ?");
+$query->execute([$user_id]);
+$result = $query->fetch(PDO::FETCH_ASSOC);
+
+if ($result['url_count'] >= $max_urls) {
+    echo json_encode(['error' => 'Limite de URLs atingido']);
+    exit;
+}
+
 $url = $data['url'];
+
+if (strlen($url) > $max_length) {
+    echo json_encode(['error' => 'URL muito longa']);
+    exit;
+}
+
 $shortCode = substr(md5(uniqid(rand(), true)), 0, 6);
 
-$file = fopen('urls.txt', 'a');
-fwrite($file, $shortCode . ' ' . $url . PHP_EOL);
-fclose($file);
+$query = $db->prepare("INSERT INTO urls (user_id, short_code, original_url) VALUES (?, ?, ?)");
+$query->execute([$user_id, $shortCode, $url]);
 
-$shortUrl = 'http://seusite.com/' . $shortCode;
+$shortUrl = 'https://seu-dominio.vercel.app/' . $shortCode;
 
 echo json_encode(['short_url' => $shortUrl]);
+?>
