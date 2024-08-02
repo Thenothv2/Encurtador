@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encurtador de URL</title>
+    <title>Encurtador de URLs</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Encurtador de URL</h1>
-        <form id="url-form">
-            <input type="url" id="url-input" placeholder="Digite a URL aqui..." required>
-            <button type="submit">Encurtar</button>
-        </form>
-        <div id="result" style="display: none;">
-            <p>URL Encurtada:</p>
-            <a id="short-url" href="#" target="_blank"></a>
-        </div>
-    </div>
+    <header class="header">
+        <h1>Encurtador de URLs</h1>
+    </header>
+    <main class="main">
+        <section class="shorten-form">
+            <h2>Encurte sua URL</h2>
+            <form id="shorten-form">
+                <div class="form-group">
+                    <input type="text" id="url-input" placeholder="Cole sua URL aqui" required>
+                </div>
+                <button type="submit">Encurtar</button>
+            </form>
+            <div id="result" class="result"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Encurtador de URLs. Todos os direitos reservados.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
