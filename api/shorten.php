@@ -18,16 +18,9 @@ require_once 'db.php';
 
 $user_id = $_SESSION['user_id'];
 
-// Verifica se o usuário é premium
-$query = $db->prepare("SELECT is_premium FROM users WHERE id = ?");
-$query->execute([$user_id]);
-$user = $query->fetch(PDO::FETCH_ASSOC);
-
-$is_premium = $user['is_premium'];
-
-// Define limites para URLs e tamanho do link
-$max_urls = $is_premium ? 1000 : 100;
-$max_length = $is_premium ? 500 : 200;
+// Limites fixos para URLs e tamanho do link
+$max_urls = 100; // Limite fixo de URLs
+$max_length = 200; // Tamanho máximo da URL
 
 // Verifica o número de URLs criadas pelo usuário
 $query = $db->prepare("SELECT COUNT(*) AS url_count FROM urls WHERE user_id = ?");
