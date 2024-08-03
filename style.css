@@ -1,69 +1,79 @@
-/* style.css */
-
+/* Estilos Gerais */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #2c2c2c; /* Dark background */
-    color: #fff;
+    background-color: #000; /* Preto Super Amoled */
+    color: #ff0000; /* Vermelho Ultra Gótico */
+    font-family: 'IM Fell English SC', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
+    font-size: 0.85em; /* Fonte menor */
 }
 
-.header {
-    background-color: #b71c1c; /* Dark Red */
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-.main {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #333; /* Darker background */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.shortcut-form {
-    margin-top: 20px;
-}
-
-.form-group {
+h1 {
     margin-bottom: 20px;
+    color: #ff0000;
+    font-size: 2em;
 }
 
-input[type="text"] {
+input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background-color: #222; /* Slightly lighter dark */
+    margin-bottom: 10px;
+    border: 1px solid #ff0000;
+    background-color: #1a1a1a;
     color: #fff;
+    font-size: 0.85em; /* Fonte menor */
 }
 
 button {
-    background-color: #b71c1c; /* Dark Red */
-    color: #fff;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0000;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    color: #fff;
+    font-size: 1em;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #f44336; /* Lighter Dark Red */
+    background-color: #cc0000;
 }
 
-.result {
-    margin-top: 20px;
+/* Estilos Específicos da Tela de Login */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.footer {
-    background-color: #b71c1c; /* Dark Red */
-    color: #fff;
+.login-container {
+    width: 400px; /* Maior largura */
+    padding: 30px;
+    border: 2px solid #ff0000;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 10px #ff0000;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+}
+
+#login-message {
+    margin-top: 10px;
+    color: #ff0000;
+}
+
+/* Estilos Específicos da Tela Principal */
+.container {
+    width: 500px; /* Maior largura */
+    padding: 30px;
+    border: 2px solid #ff0000;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 10px #ff0000;
+    text-align: center;
+}
+
+#result {
+    margin-top: 20px;
+    color: #ff0000;
 }
