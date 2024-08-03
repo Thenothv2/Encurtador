@@ -1,5 +1,6 @@
-document.getElementById('login-form').addEventListener('submit', async function(event) {
-    event.preventDefault();
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
@@ -12,9 +13,10 @@ document.getElementById('login-form').addEventListener('submit', async function(
     });
 
     const result = await response.json();
+
     if (result.success) {
         window.location.href = 'index.html';
     } else {
-        document.getElementById('login-message').textContent = result.error;
+        alert('Login failed: ' + result.error);
     }
 });
