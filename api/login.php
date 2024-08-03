@@ -1,27 +1,13 @@
+// login.php
 <?php
-header('Content-Type: application/json');
 session_start();
+$valid_username = 'admin';
+$valid_password = 'senha123'; // A senha deve ser protegida e armazenada de forma segura
 
-$data = json_decode(file_get_contents('php://input'), true);
-
-if (!isset($data['email'], $data['password'])) {
-    echo json_encode(['success' => false, 'error' => 'Campos obrigatórios não fornecidos.']);
-    exit;
-}
-
-$email = $data['email'];
-$password = $data['password'];
-
-require_once 'db.php';
-
-$query = $db->prepare("SELECT id, password FROM users WHERE email = ?");
-$query->execute([$email]);
-$user = $query->fetch(PDO::FETCH_ASSOC);
-
-if ($user && password_verify($password, $user['password'])) {
-    $_SESSION['user_id'] = $user['id'];
-    echo json_encode(['success' => true]);
+if ($_POST['username'] === $valid_username && $_POST['password'] === $valid_password) {
+    $_SESSION['loggedin'] = true;
+    header('Location: dashboard.php'); // Redireciona para a página principal do encurtador
 } else {
-    echo json_encode(['success' => false, 'error' => 'Credenciais inválidas.']);
+    echo 'Usuário ou senha incorretos!';
 }
 ?>
