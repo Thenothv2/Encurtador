@@ -62,18 +62,3 @@ button:hover {
     margin-top: 10px;
     color: #ff0000;
 }
-
-/* Estilos Específicos da Tela Principal */
-.container {
-    width: 500px; /* Maior largura */
-    padding: 30px;
-    border: 2px solid #ff0000;
-    background-color: #1a1a1a;
-    box-shadow: 0 0 10px #ff0000;
-    text-align: center;
-}
-
-#result {
-    margin-top: 20px;
-    color: #ff0000;
-}
