@@ -1,8 +1,14 @@
 // login.js
 document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Evita o envio do formulário padrão
     
-    // Implementar lógica de login aqui
-    // Exemplo de redirecionamento após login bem-sucedido
-    window.location.href = 'index-logged-in.html';
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Aqui você pode validar com um backend real ou usar um valor fixo para teste
+    if (username === 'admin' && password === 'senha123') {
+        window.location.href = 'dashboard.html'; // Redireciona para a página principal do encurtador
+    } else {
+        document.getElementById('login-error').textContent = 'Usuário ou senha incorretos!';
+    }
 });
