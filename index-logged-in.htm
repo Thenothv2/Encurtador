@@ -1,0 +1,49 @@
+<!-- index-logged-in.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Principal - Encurtador de URLs</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body class="dark-red-theme">
+    <header>
+        <div class="container">
+            <h1>Bem-vindo de volta!</h1>
+            <nav>
+                <ul>
+                    <li><a href="profile.html">Perfil</a></li>
+                    <li><a href="user-settings.html">Configurações</a></li>
+                    <li><a href="logout.html">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Encurtar URL</h2>
+            <form id="shorten-form">
+                <label for="long-url">URL Longa:</label>
+                <input type="text" id="long-url" placeholder="Insira o URL longo aqui" required>
+                <label for="custom-url">URL Personalizada (opcional):</label>
+                <input type="text" id="custom-url" placeholder="URL personalizada (opcional)">
+                <button type="submit">Encurtar URL</button>
+            </form>
+            <div id="short-url" class="gothic-font"></div>
+            <button id="copy-button" style="display: none;">Copiar</button>
+            
+            <h2>URLs Encurtadas</h2>
+            <div id="user-urls">
+                <!-- URLs encurtadas do usuário serão exibidas aqui -->
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Encurtador de URLs. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
