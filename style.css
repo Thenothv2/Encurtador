@@ -79,3 +79,12 @@ button:hover {
     text-align: center;
     margin-top: 1rem;
 }
+
+#short-url {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+#user-urls {
+    margin-top: 20px;
+}
