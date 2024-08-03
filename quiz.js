@@ -1,47 +1,54 @@
-// quiz.js
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('quiz-form');
-    const errorDiv = document.getElementById('quiz-error');
+document.addEventListener('DOMContentLoaded', function() {
+    const questions = [
+        // Adicione suas perguntas aqui
+    ];
 
-    function shuffleAnswers(container) {
-        const answers = Array.from(container.querySelectorAll('label'));
-        for (let i = answers.length - 1; i > 0; i--) {
+    const quizForm = document.getElementById('quiz-form');
+    const quizResult = document.getElementById('quiz-result');
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            container.appendChild(answers[j]);
+            [array[i], array[j]] = [array[j], array[i]];
         }
     }
 
-    // Randomiza as respostas de todas as perguntas
-    document.querySelectorAll('.question').forEach(question => {
-        shuffleAnswers(question.querySelector('.answers'));
-    });
+    questions.forEach((q, index) => {
+        const fieldset = document.createElement('fieldset');
+        const legend = document.createElement('legend');
+        legend.textContent = q.question;
+        fieldset.appendChild(legend);
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
+        const options = [...q.options];
+        shuffle(options);
 
-        // Obtendo as respostas
-        const correctAnswers = {
-            q1: 'brasilia',
-            q2: '500',
-            q3: 'azul',
-            q4: 'jupiter',
-            q5: 'h2o',
-            q6: 'oceano-pacifico',
-            q7: 'youtube',
-            q8: 'whatsapp',
-            q9: 'chatgpt',
-            q10: 'whatsapp'
-        };
-
-        // Verificação das respostas
-        const allCorrect = Object.keys(correctAnswers).every(key => {
-            return document.querySelector(`input[name="${key}"][value="${correctAnswers[key]}"]`).checked;
+        options.forEach(option => {
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = `question${index}`;
+            input.value = option;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(option));
+            fieldset.appendChild(label);
         });
 
-        if (allCorrect) {
-            window.location.href = 'index-logged-in.html'; // Redireciona para a tela inicial após o login
+        quizForm.insertBefore(fieldset, quizForm.querySelector('button'));
+    });
+
+    quizForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        let score = 0;
+        questions.forEach((q, index) => {
+            const userAnswer = quizForm[`question${index}`].value;
+            if (userAnswer === q.answer) {
+                score++;
+            }
+        });
+        if (score === questions.length) {
+            window.location.href = 'index-logged-in.html';
         } else {
-            errorDiv.textContent = 'Respostas incorretas. Tente novamente.';
+            quizResult.textContent = 'Você precisa acertar todas as perguntas para acessar o site.';
         }
     });
 });
