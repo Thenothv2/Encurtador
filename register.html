@@ -1,16 +1,21 @@
-<!-- register.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Registro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta - Encurtador de URLs</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="register.js" defer></script>
 </head>
 <body>
-    <h1>Registrar</h1>
-    <form action="register.php" method="post">
-        <input type="text" name="username" placeholder="Nome de usuário" required>
-        <input type="password" name="password" placeholder="Senha" required>
-        <button type="submit">Registrar</button>
-    </form>
+    <div class="container">
+        <h1>Criar Conta</h1>
+        <form id="register-form">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Criar Conta</button>
+        </form>
+        <div id="register-message" class="error-message"></div>
+    </div>
 </body>
 </html>
