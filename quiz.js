@@ -1,55 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const questions = [
-        {
-            question: "Qual é a capital do Brasil?",
-            options: ["São Paulo", "Brasília", "Rio de Janeiro", "Salvador"],
-            correct: 1
-        },
-        {
-            question: "Quanto é 50 vezes 10?",
-            options: ["500", "1000", "50", "5000"],
-            correct: 0
-        },
-        {
-            question: "Qual é a cor do céu em um dia claro?",
-            options: ["Verde", "Azul", "Vermelho", "Preto"],
-            correct: 1
-        },
-        {
-            question: "Qual é o maior planeta do sistema solar?",
-            options: ["Terra", "Marte", "Júpiter", "Saturno"],
-            correct: 2
-        },
-        {
-            question: "Qual é a fórmula química da água?",
-            options: ["H2O", "CO2", "O2", "H2SO4"],
-            correct: 0
-        },
-        {
-            question: "Qual é o maior oceano do mundo?",
-            options: ["Oceano Atlântico", "Oceano Índico", "Oceano Pacífico", "Oceano Ártico"],
-            correct: 2
-        },
-        {
-            question: "Qual é a raiz quadrada de 144?",
-            options: ["10", "11", "12", "13"],
-            correct: 2
-        },
-        {
-            question: "Qual é o símbolo químico do ouro?",
-            options: ["Au", "Ag", "Pb", "Fe"],
-            correct: 0
-        },
-        {
-            question: "Quem pintou 'A Última Ceia'?",
-            options: ["Michelangelo", "Leonardo da Vinci", "Raphael", "Donatello"],
-            correct: 1
-        },
-        {
-            question: "Qual é o nome da nave espacial que levou os primeiros humanos à Lua?",
-            options: ["Apollo 13", "Apollo 11", "Sputnik", "Challenger"],
-            correct: 1
-        }
+        // Suas perguntas aqui...
     ];
 
     let currentQuestionIndex = 0;
@@ -96,8 +47,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showResult() {
-        questionContainer.innerHTML = `<h2>Você acertou ${score} de ${questions.length} perguntas!</h2>`;
-        nextButton.style.display = 'none';
+        const userEmail = localStorage.getItem('userEmail');
+        fetch('process-quiz.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: userEmail,
+                score: score
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'register.html';
+            } else {
+                quizResult.textContent = 'Houve um erro ao processar seu quiz. Tente novamente.';
+            }
+        });
     }
 
     nextButton.addEventListener('click', checkAnswer);
