@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz de Acesso - Encurtador de URLs</title>
+    <title>Quiz - Encurtador de URLs</title>
     <link rel="stylesheet" href="style.css">
     <script src="quiz.js" defer></script>
 </head>
 <body>
     <div class="container">
         <h1>Quiz de Acesso</h1>
-        <form id="quiz-form">
-            <button type="submit">Verificar</button>
-        </form>
-        <div id="quiz-result" class="error-message"></div>
+        <div id="quiz-container">
+            <div class="quiz-slide" id="question-container">
+                <!-- As perguntas serão inseridas dinamicamente aqui -->
+            </div>
+            <button id="next-button" style="display: none;">Próxima</button>
+            <div id="quiz-result" class="error-message"></div>
+        </div>
     </div>
 </body>
 </html>
