@@ -1,17 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const emailForm = document.getElementById('email-form');
-    const emailError = document.getElementById('email-error');
+    const loginForm = document.getElementById('login-form');
+    const errorMessage = document.getElementById('error-message');
 
-    emailForm.addEventListener('submit', function(event) {
+    loginForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        const email = loginForm.email.value;
 
-        const email = document.getElementById('email').value;
-
-        // Verifica se o e-mail está no formato correto (apenas validação básica)
-        if (email.includes('@')) {
+        if (email) {
+            localStorage.setItem('userEmail', email);
             window.location.href = 'quiz.html';
         } else {
-            emailError.textContent = 'Por favor, forneça um e-mail válido.';
+            errorMessage.textContent = 'Por favor, insira um e-mail válido!';
         }
     });
 });
