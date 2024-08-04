@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 registerMessage.textContent = data.message;
+                if (data.success) {
+                    window.location.href = 'quiz.html?email=' + encodeURIComponent(email);
+                }
             });
         } else {
             registerMessage.textContent = 'O e-mail deve ter pelo menos 15 caracteres!';
