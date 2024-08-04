@@ -16,11 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(data => {
-                if (data.success) {
-                    registerMessage.textContent = 'ESTAMOS CRIANDO A SUA CONTA, AGUARDE 5 MINUTINHOS';
-                } else {
-                    registerMessage.textContent = 'Houve um erro ao criar sua conta. Tente novamente.';
-                }
+                registerMessage.textContent = data.message;
             });
         } else {
             registerMessage.textContent = 'O e-mail deve ter pelo menos 15 caracteres!';
