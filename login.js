@@ -1,14 +1,17 @@
-// login.js
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita o envio do formulário padrão
-    
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+document.addEventListener('DOMContentLoaded', function() {
+    const emailForm = document.getElementById('email-form');
+    const emailError = document.getElementById('email-error');
 
-    // Aqui você pode validar com um backend real ou usar um valor fixo para teste
-    if (username === 'admin' && password === 'senha123') {
-        window.location.href = 'dashboard.html'; // Redireciona para a página principal do encurtador
-    } else {
-        document.getElementById('login-error').textContent = 'Usuário ou senha incorretos!';
-    }
+    emailForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+
+        // Verifica se o e-mail está no formato correto (apenas validação básica)
+        if (email.includes('@')) {
+            window.location.href = 'quiz.html';
+        } else {
+            emailError.textContent = 'Por favor, forneça um e-mail válido.';
+        }
+    });
 });
