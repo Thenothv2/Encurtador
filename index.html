@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Encurtador de URLs</title>
+    <title>Encurtador de URLs - Login</title>
     <link rel="stylesheet" href="style.css">
     <script src="login.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Bem-vindo ao Encurtador de URLs</h1>
-        <p>Por favor, forneça seu e-mail e complete o quiz para acessar o site.</p>
-        <form id="email-form">
+        <h1>Encurtador de URLs</h1>
+        <form id="login-form">
             <label for="email">E-mail:</label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" name="email" required>
             <button type="submit">Iniciar Quiz</button>
         </form>
-        <div id="email-error" class="error-message"></div>
+        <div id="error-message" class="error-message"></div>
     </div>
 </body>
 </html>
