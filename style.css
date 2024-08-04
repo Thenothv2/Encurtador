@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700&display=swap');
 
-/* Corpo do site */
 body {
     background-color: #0d0d0d; /* Preto super-AMOLED */
     color: #f2f2f2;
@@ -11,41 +10,28 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
 }
 
-/* Tema escuro vermelho */
 .dark-red-theme {
-    background-color: #220000; /* Vermelho ultra-escuro mais forte */
+    background-color: #330000; /* Vermelho ultra-escuro */
 }
 
-/* Container principal */
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: #330000; /* Vermelho forte mais intenso */
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
-}
-
-/* Títulos */
-h1, h2 {
-    color: #ff6666; /* Vermelho claro mais forte */
-    margin-bottom: 1.5rem;
+    background-color: #450000; /* Vermelho forte */
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     text-align: center;
+    margin-bottom: 2rem;
+    color: #ff3333; /* Vermelho claro */
 }
 
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-/* Formulários */
 form {
     display: flex;
     flex-direction: column;
@@ -54,15 +40,15 @@ form {
 label {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #ff9999; /* Rosa claro mais forte */
+    color: #ffcccc; /* Rosa claro gótico */
 }
 
-input {
+input[type="email"] {
     font-size: 1.2rem;
-    padding: 0.75rem;
+    padding: 0.5rem;
     margin-bottom: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: #1a1a1a; /* Preto super-AMOLED */
     color: #f2f2f2;
 }
@@ -70,115 +56,49 @@ input {
 button {
     font-size: 1.5rem;
     padding: 0.75rem;
-    background-color: #e60000; /* Vermelho intenso */
+    background-color: #cc0000; /* Vermelho forte */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #ff3333; /* Vermelho mais claro e chamativo */
-    transform: scale(1.05);
+    background-color: #ff1a1a; /* Vermelho mais claro */
 }
 
-button:active {
-    background-color: #cc0000; /* Vermelho forte ao clicar */
-    transform: scale(0.95);
-}
-
-/* Fonte gótica */
 .gothic-font {
     font-family: 'Gothic A1', sans-serif;
-    color: #ff9999; /* Rosa claro mais forte */
+    color: #ffcccc; /* Rosa claro gótico */
 }
 
-/* Mensagens de erro */
 .error-message {
-    color: #ff6666; /* Vermelho de erro mais visível */
+    color: #ff4d4d; /* Vermelho de erro */
     font-size: 1rem;
     text-align: center;
     margin-top: 1rem;
 }
 
-/* Navegação */
-nav {
-    background-color: #333; /* Cinza escuro para o fundo da navegação */
-    padding: 1rem;
-    border-radius: 5px;
-    margin-bottom: 2rem;
-}
-
-nav ul {
+ul {
     list-style-type: none;
     padding: 0;
+}
+
+ul li {
+    margin-bottom: 1rem;
+}
+
+ul li label {
+    font-size: 1.2rem;
+}
+
+.quiz-slide {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-nav ul li {
-    margin-right: 20px;
-}
-
-nav a {
-    color: #ff6666; /* Vermelho claro mais forte */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-    color: #e60000; /* Vermelho intenso ao passar o mouse */
-}
-
-/* Rodapé */
-footer {
-    text-align: center;
-    font-size: 0.9rem;
-    padding: 1rem;
-    background-color: #220000; /* Vermelho ultra-escuro mais forte */
-    color: #f5f5f5; /* Branco suave para o texto */
-}
-
-/* URLs do usuário */
-#user-urls {
-    margin-top: 20px;
-}
-
-#user-urls div {
-    padding: 10px;
-    background-color: #330000; /* Vermelho forte mais intenso */
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Detalhes adicionais */
-.box {
-    background-color: #4b0082; /* Roxo escuro para destaques */
-    color: #f5f5f5; /* Branco suave para o texto */
-    padding: 15px;
-    border-radius: 8px;
-    margin: 10px 0;
-}
-
-.highlight {
-    background-color: #004d00; /* Verde escuro para elementos destacados */
-    color: #f5f5f5; /* Branco suave para o texto */
-    padding: 10px;
-    border-radius: 8px;
-    margin: 10px 0;
-}
-
-.detail {
-    background-color: #003366; /* Azul escuro para detalhes */
-    color: #f5f5f5; /* Branco suave para o texto */
-    padding: 10px;
-    border-radius: 8px;
-    margin: 10px 0;
-}
-
-.secondary-text {
-    color: #555555; /* Cinza médio para textos secundários */
+#next-button {
+    margin-top: 1rem;
 }
