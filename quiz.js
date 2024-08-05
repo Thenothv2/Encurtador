@@ -1,75 +1,33 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const questions = [
-        // Suas perguntas aqui...
-    ];
+document.addEventListener('DOMContentLoaded', () => {
+    const startQuizButton = document.getElementById('start-quiz');
+    const emailInput = document.getElementById('email-input');
 
-    let currentQuestionIndex = 0;
-    let score = 0;
-
-    const questionContainer = document.getElementById('question-container');
-    const nextButton = document.getElementById('next-button');
-    const quizResult = document.getElementById('quiz-result');
-
-    function showQuestion(index) {
-        const questionData = questions[index];
-        questionContainer.innerHTML = `
-            <h2>${questionData.question}</h2>
-            <ul>
-                ${questionData.options.map((option, i) => `
-                    <li>
-                        <label>
-                            <input type="radio" name="question${index}" value="${i}">
-                            ${option}
-                        </label>
-                    </li>
-                `).join('')}
-            </ul>
-        `;
-        nextButton.style.display = 'block';
-    }
-
-    function checkAnswer() {
-        const selectedOption = document.querySelector(`input[name="question${currentQuestionIndex}"]:checked`);
-        if (selectedOption) {
-            const answerIndex = parseInt(selectedOption.value);
-            if (answerIndex === questions[currentQuestionIndex].correct) {
-                score++;
-            }
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                showQuestion(currentQuestionIndex);
-            } else {
-                showResult();
-            }
-        } else {
-            quizResult.textContent = 'Por favor, selecione uma resposta!';
+    startQuizButton.addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        
+        if (email === '') {
+            alert('Por favor, insira um e-mail antes de iniciar o quiz.');
+            return;
         }
-    }
 
-    function showResult() {
-        const userEmail = localStorage.getItem('userEmail');
-        fetch('process-quiz.php', {
+        // Verificar se o e-mail já está registrado
+        fetch('check-email.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify({
-                email: userEmail,
-                score: score
-            })
+            body: `email=${encodeURIComponent(email)}`
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                window.location.href = 'register.html';
+            if (data.exists) {
+                alert('Você já está registrado. Você não precisa refazer o quiz.');
+                window.location.href = 'index-logged-in.htm'; // Redirecionar para a página após login
             } else {
-                quizResult.textContent = 'Houve um erro ao processar seu quiz. Tente novamente.';
+                // Iniciar o quiz
+                window.location.href = 'quiz.html';
             }
-        });
-    }
-
-    nextButton.addEventListener('click', checkAnswer);
-
-    // Inicia o quiz com a primeira pergunta
-    showQuestion(currentQuestionIndex);
+        })
+        .catch(error => console.error('Erro:', error));
+    });
 });
