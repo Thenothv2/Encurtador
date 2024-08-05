@@ -8,15 +8,10 @@
     <script src="quiz.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Quiz</h1>
-        <form id="quiz-form">
-            <div id="quiz-questions">
-                <!-- As perguntas serão inseridas dinamicamente aqui -->
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
-        <div id="quiz-message"></div>
+    <div class="quiz-container">
+        <div id="quiz-question" class="question"></div>
+        <div id="quiz-options" class="options"></div>
+        <button id="next-question" class="next-button">Próxima Pergunta</button>
     </div>
 </body>
 </html>
