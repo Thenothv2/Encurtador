@@ -109,3 +109,50 @@ ul li label {
     margin-bottom: 1rem;
     text-align: center;
 }
+
+.quiz-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #333;
+    color: #fff;
+}
+
+.question {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.option-button {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.option-button:hover {
+    background-color: #555;
+}
+
+.next-button {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #888;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #999;
+}
+
