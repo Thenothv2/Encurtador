@@ -102,3 +102,10 @@ ul li label {
 #next-button {
     margin-top: 1rem;
 }
+
+.notice {
+    font-size: 1.2rem;
+    color: #ffcccc; /* Rosa claro gótico */
+    margin-bottom: 1rem;
+    text-align: center;
+}
